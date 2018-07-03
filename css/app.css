@@ -51,7 +51,7 @@ h1 {
     margin: 0 0 3em;
 }
 
-.deck .card {
+.deck .card , .deck .opencard {
     height: 125px;
     width: 125px;
     background: #2e3d49;
@@ -68,17 +68,17 @@ h1 {
     transform: rotateY(0deg);
 }
 
-.deck .card.open {
+.deck .opencard.open {
     transform: rotateY(180deg);
     background: #02b3e4;
     cursor: default;
 }
 
-.deck .card.show {
+.deck .opencard.show {
     font-size: 33px;
 }
 
-.deck .card.match {
+.deck .opencard.match {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
@@ -87,7 +87,7 @@ h1 {
     /* When the animation is finished, start again */
     animation-iteration-count: 1;
 }
-.deck .card.open.no-match {
+.deck .opencard.open.no-match {
     /* Start the shake animation and make the animation last for 0.5 seconds */
     animation: nomatch 0.5s; 
     /* When the animation is finished, start again */

@@ -66,38 +66,38 @@ function shuffle(array) {
 }
 
 function cardClicked(i) {
-
-  if(isIgnore)
+ 
+    
+  if(isIgnore || cardsList[i].className == "opencard open show" )
     return; // return if user click third card and event for second not finished yet 
 
   isIgnore = true;
   //if first card to open if this card is not match before if this card not already open
-  if(firstClick == 0 && !cardsList[i].classList.contains('match') && !cardsList[i].classList.contains('open') ){
-    var classString = cardsList[i].className; 
-    var newClass = classString.concat(" open show"); 
-    cardsList[i].className = newClass; 
-    firstClick++;
-    firstIndexSelected = i;
+  if(firstClick == 0 && cardsList[i].className == "card" ){
     isIgnore = false;
+    firstClick++;
+    cardsList[i].className = "opencard open show"; 
+    firstIndexSelected = i;
+    
   }
   //if second card to open if this card is not match before if this card not already open
-  else if(firstClick == 1 && !cardsList[i].classList.contains('match') && !cardsList[i].classList.contains('open') ){
-    var classString = cardsList[i].className; 
-    var newClass = classString.concat(" open show"); 
-    cardsList[i].className = newClass;
+  else if(firstClick == 1 && cardsList[i].className == "card" ){
+    event.preventDefault();
     firstClick--;
+    cardsList[i].className = "opencard open show"; 
     Moves++;
     document.getElementsByClassName('moves')[0].textContent =  Moves;
     if(cardsList[firstIndexSelected].children[0].classList[1] == cardsList[i].children[0].classList[1]){
         // match
+        isIgnore = false;
         console.log('match');
-        cardsList[i].className = "card match"; 
-        cardsList[firstIndexSelected].className = "card match";
+        cardsList[i].className = "opencard match"; 
+        cardsList[firstIndexSelected].className = "opencard match";
         TotalMatches++;
         if(TotalMatches==8){
             alert("you win");
         }
-        isIgnore = false;
+        
     }
     else{
         // doesnt match
@@ -108,6 +108,7 @@ function cardClicked(i) {
             cardsList[i].className = "card";
             cardsList[firstIndexSelected].className = "card";
             isIgnore = false;
+            
         }, 500);
         
         
