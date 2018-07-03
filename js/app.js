@@ -86,6 +86,7 @@ function cardClicked(i) {
     firstClick--;
     cardsList[i].className = "opencard open show"; 
     Moves++;
+    
     document.getElementsByClassName('moves')[0].textContent =  Moves;
     if(cardsList[firstIndexSelected].children[0].classList[1] == cardsList[i].children[0].classList[1]){
         // match
@@ -94,9 +95,18 @@ function cardClicked(i) {
         cardsList[i].className = "opencard match"; 
         cardsList[firstIndexSelected].className = "opencard match";
         TotalMatches++;
-        if(TotalMatches==8){
-            alert("you win");
+        if(Moves == 12 && TotalMatches == 5){
+            document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star";
         }
+        if(Moves > 12 && Moves <=20 && TotalMatches == 8){
+            document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star";
+            document.getElementsByClassName('stars')[0].children[2].children[0].className="fa fa-star";
+        }
+        setTimeout(function () {
+            if(TotalMatches==8){
+                alert("you win");
+            }
+        }, 500);
         
     }
     else{
