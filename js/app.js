@@ -11,19 +11,7 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
 
 
 /*
@@ -39,23 +27,47 @@ function shuffle(array) {
 
 
 window.onload = init;
-var cardsList =  document.getElementsByClassName("card");
+var cardsList = [].slice.call(document.getElementsByClassName("card"));
 var firstClick = 0;
 var firstIndexSelected = 0;
 var Moves = 0;
+document.getElementsByClassName('moves')[0].textContent =  Moves;
 var TotalMatches = 0;
 
 var isIgnore = false;
+
 function init() {
-    // for(let i = 0 ;  i < cardsList.length ; i++ ){
-    //     cardsList[i].onclick = cardClicked;
-    // }
-  
+    
+    cardsList = shuffle(cardsList);
+    for(let i = 0 ;  i < cardsList.length ; i++ ){
+        document.getElementsByClassName("deck")[0].appendChild(cardsList[i]);
+        cardsList[i].addEventListener("click", function(){
+            cardClicked(i);
+        });
+    }
+}
+
+function reset() {
+    location.reload();
+}
+
+
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
 }
 
 function cardClicked(i) {
 
-    if(isIgnore)
+  if(isIgnore)
     return; // return if user click third card and event for second not finished yet 
 
   isIgnore = true;
