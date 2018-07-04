@@ -21,13 +21,40 @@ body {
     font-family: 'Coda', cursive;
 }
 
+.text-center{
+    text-align: center;
+}
+
+
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+.hide{
+    display: none;
+}
+.youwon{
+    height: 100%;
+    background: #fff;
+}
 
+.youwon .fa.fa-check-circle-o{
+    font-size: 80px;
+    color: green;
+}
+.youwon .btn{
+    color: #fff;
+    font-size: 14px;
+    background: #02ccba;
+    border: 0;
+    border-radius: 5px;
+    height: 30px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;

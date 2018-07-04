@@ -88,6 +88,8 @@ function cardClicked(i) {
     Moves++;
     
     document.getElementsByClassName('moves')[0].textContent =  Moves;
+    document.getElementsByClassName('totalmoves')[0].textContent =  Moves;
+
     if(cardsList[firstIndexSelected].children[0].classList[1] == cardsList[i].children[0].classList[1]){
         // match
         isIgnore = false;
@@ -95,16 +97,23 @@ function cardClicked(i) {
         cardsList[i].className = "opencard match"; 
         cardsList[firstIndexSelected].className = "opencard match";
         TotalMatches++;
-        if(Moves == 12 && TotalMatches == 5){
+        if(Moves <= 10 && TotalMatches == 4){
             document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star";
+            document.getElementsByClassName('totalstars')[0].textContent =  2;
         }
-        if(Moves > 12 && Moves <=20 && TotalMatches == 8){
+        else if( Moves <=20 && TotalMatches == 8){
             document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star";
             document.getElementsByClassName('stars')[0].children[2].children[0].className="fa fa-star";
+            document.getElementsByClassName('totalstars')[0].textContent =  3;
+        }
+        else{
+            document.getElementsByClassName('totalstars')[0].textContent =  1;
         }
         setTimeout(function () {
             if(TotalMatches==8){
-                alert("you win");
+                document.getElementsByClassName('container')[0].className = "container youwon";
+                document.getElementsByClassName('container')[1].className = "container hide";
+
             }
         }, 500);
         
