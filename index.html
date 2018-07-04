@@ -13,10 +13,10 @@
         <i class="fa fa-check-circle-o"></i>
         <p class="text-center">
             Congratulations! You Won! <br />
-            with <span class="totalmoves"> 0 </span> Moves and <span class="totalstars">1</span> star <br />
+            with <span class="totalmoves"> 0 </span> Moves and <span class="totalstars">1</span> star  in <span class="totalSeconds"> 0 </span> Timer <br />
             Woooooooo!
         </p>
-        <input type="button" value="Play again!" onclick="reset()" class="btn btn-primary" />
+        <input type="button" value="Play again!" onclick="resetGame()" class="btn btn-primary" />
     </div>
 
     <div class="container">
@@ -31,11 +31,12 @@
         		<li><i class="fa fa-star-o"></i></li>
         	</ul>
         	<span class="moves">0</span> Moves
-            <div class="restart" onclick="reset()">
+            <div class="restart" onclick="resetGame()">
         		<i class="fa fa-repeat"></i>
-        	</div>
+            </div>
+            <div class="timer">Timer: <span id="time"></span></div>
         </section>
-        
+
         <ul class="deck"></ul>
         <ul class="deck2">
             <li class="card">
