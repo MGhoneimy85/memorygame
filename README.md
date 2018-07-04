@@ -2,16 +2,18 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Functions](#instructions)
 * [Contributing](#contributing)
 
-## Instructions
+## Functions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Intialtize Function  init()
 
-To get started, open `js/app.js` and start building out the app's functionality
+Shuffle Function shuffle()
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+Reset Function reset|()
+
+onClick Function cardClicked()
 
 ## Contributing
 

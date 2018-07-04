@@ -10,7 +10,6 @@
  *   - add each card's HTML to the page
  */
 
-// Shuffle function from http://stackoverflow.com/a/2450976
 
 
 
@@ -33,11 +32,12 @@ var firstIndexSelected = 0;
 var Moves = 0;
 document.getElementsByClassName('moves')[0].textContent =  Moves;
 var TotalMatches = 0;
-
 var isIgnore = false;
 
+
+// initialization function to shuffle cards and start initiate html with shuffled cards 
+
 function init() {
-    
     cardsList = shuffle(cardsList);
     for(let i = 0 ;  i < cardsList.length ; i++ ){
         document.getElementsByClassName("deck")[0].appendChild(cardsList[i]);
@@ -47,11 +47,13 @@ function init() {
     }
 }
 
+// reset function to reload page
+
 function reset() {
     location.reload();
 }
 
-
+// Shuffle function from http://stackoverflow.com/a/2450976
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -65,38 +67,38 @@ function shuffle(array) {
     return array;
 }
 
+// on any card clicked function to check if this the first or second and if second to check if match or no match
+
 function cardClicked(i) {
  
-    
   if(isIgnore || cardsList[i].className == "opencard open show" )
-    return; // return if user click third card and event for second not finished yet 
+    return; // return if user click third card and event for second card not finished yet 
 
   isIgnore = true;
-  //if first card to open if this card is not match before if this card not already open
+
+  //if first card to open 
   if(firstClick == 0 && cardsList[i].className == "card" ){
     isIgnore = false;
     firstClick++;
     cardsList[i].className = "opencard open show"; 
     firstIndexSelected = i;
-    
   }
-  //if second card to open if this card is not match before if this card not already open
+  //if second card to open
   else if(firstClick == 1 && cardsList[i].className == "card" ){
     event.preventDefault();
     firstClick--;
     cardsList[i].className = "opencard open show"; 
     Moves++;
-    
     document.getElementsByClassName('moves')[0].textContent =  Moves;
     document.getElementsByClassName('totalmoves')[0].textContent =  Moves;
 
     if(cardsList[firstIndexSelected].children[0].classList[1] == cardsList[i].children[0].classList[1]){
         // match
-        isIgnore = false;
         console.log('match');
         cardsList[i].className = "opencard match"; 
         cardsList[firstIndexSelected].className = "opencard match";
         TotalMatches++;
+        isIgnore = false;
         if(Moves <= 10 && TotalMatches == 4){
             document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star";
             document.getElementsByClassName('totalstars')[0].textContent =  2;
@@ -113,10 +115,8 @@ function cardClicked(i) {
             if(TotalMatches==8){
                 document.getElementsByClassName('container')[0].className = "container youwon";
                 document.getElementsByClassName('container')[1].className = "container hide";
-
             }
         }, 500);
-        
     }
     else{
         // doesnt match
@@ -127,13 +127,7 @@ function cardClicked(i) {
             cardsList[i].className = "card";
             cardsList[firstIndexSelected].className = "card";
             isIgnore = false;
-            
         }, 500);
-        
-        
     }
-    
-        
   }
-  
 }
