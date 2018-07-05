@@ -1,5 +1,7 @@
 # Memory Game Project
 
+    This was a startup from udacity for a project in term 1 for Memory Game
+
 ## Table of Contents
 
 * [dependencies](#instructions)
