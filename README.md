@@ -7,6 +7,7 @@
 
 ## Dependencies
 
+Must be connected to the internet as the below Dependencies files not included in the project
 
 font awesome 
 https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
