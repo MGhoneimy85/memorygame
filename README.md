@@ -4,6 +4,7 @@
 
 * [dependencies](#instructions)
 * [Functions](#instructions)
+* [References](#References)
 
 ## Dependencies
 
@@ -21,7 +22,22 @@ Intialtize Function  init()
 
 Shuffle Function shuffle()
 
-Reset Function reset|()
+Reset Function reset()
 
 onClick Function cardClicked()
 
+Stopwatch for Timer clsStopwatch()
+        show()
+        update()
+        start()
+        stop()
+        reset()
+
+
+## References
+
+ballons animation keyframes
+https://codepen.io/anon/pen/zaQVzg
+
+stop watch function
+https://gist.github.com/electricg/4372563

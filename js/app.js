@@ -79,66 +79,67 @@ function cardClicked(i) {
         TimerFlag = false;
     }
 
-  if(isIgnore || cardsList[i].className == "opencard open show" )
-    return; // return if user click third card and event for second card not finished yet 
+    if(isIgnore || cardsList[i].className == "opencard open show" )
+        return; // return if user click third card and event for second card not finished yet 
 
-  isIgnore = true;
-
-  //if first card to open 
-  if(firstClick == 0 && cardsList[i].className == "card" ){
-    isIgnore = false;
-    firstClick++;
-    cardsList[i].className = "opencard open show"; 
-    firstIndexSelected = i;
-  }
-  //if second card to open
-  else if(firstClick == 1 && cardsList[i].className == "card" ){
-    event.preventDefault();
-    firstClick--;
-    cardsList[i].className = "opencard open show"; 
-    Moves++;
-    document.getElementsByClassName('moves')[0].textContent =  Moves;
-    document.getElementsByClassName('totalmoves')[0].textContent =  Moves;
-    
-    //star rating 
-    if(Moves == 2){
-        document.getElementsByClassName('stars')[0].children[2].children[0].className="fa fa-star-o";
-        document.getElementsByClassName('totalstars')[0].textContent =  2;
-    }
-    else if( Moves == 8){
-        document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star-o";
-        document.getElementsByClassName('totalstars')[0].textContent =  1;
-    }
-    if(cardsList[firstIndexSelected].children[0].classList[1] == cardsList[i].children[0].classList[1]){
-        // match
-        console.log('match');
-        cardsList[i].className = "opencard match"; 
-        cardsList[firstIndexSelected].className = "opencard match";
-        TotalMatches++;
+    isIgnore = true;
+  
+    //if first card to open 
+    if(firstClick == 0 && cardsList[i].className == "card" ){
         isIgnore = false;
+        firstClick++;
+        cardsList[i].className = "opencard open show"; 
+        firstIndexSelected = i;
+    }
+    //if second card to open
+    else if(firstClick == 1 && cardsList[i].className == "card" ){
+        firstClick--;
+        cardsList[i].className = "opencard open show"; 
+        Moves++;
+        document.getElementsByClassName('moves')[0].textContent =  Moves;
+        document.getElementsByClassName('totalmoves')[0].textContent =  Moves;
         
-        setTimeout(function () {
-            if(TotalMatches==8){
-                stop();
-                console.log(formatTime(x.time()));
-                document.getElementsByClassName('totalSeconds')[0].innerHTML = formatTime(x.time());
-                document.getElementsByClassName('container')[0].className = "container youwon";
-                document.getElementsByClassName('container')[1].className = "container hide";
-            }
-        }, 500);
-    }
-    else{
-        // doesnt match
-        console.log('doesnt match');
-        cardsList[i].className += " no-match";
-        cardsList[firstIndexSelected].className += " no-match";
-        setTimeout(function () {
-            cardsList[i].className = "card";
-            cardsList[firstIndexSelected].className = "card";
+        //star rating 
+        if(Moves == 2){
+            document.getElementsByClassName('stars')[0].children[2].children[0].className="fa fa-star-o";
+            document.getElementsByClassName('totalstars')[0].textContent =  2;
+        }
+        else if( Moves == 8){
+            document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star-o";
+            document.getElementsByClassName('totalstars')[0].textContent =  1;
+        }
+        if(cardsList[firstIndexSelected].children[0].classList[1] == cardsList[i].children[0].classList[1]){
+            // match
+            console.log('match');
+            cardsList[i].className = "opencard match"; 
+            cardsList[firstIndexSelected].className = "opencard match";
+            TotalMatches++;
             isIgnore = false;
-        }, 500);
+            
+            setTimeout(function () {
+                if(TotalMatches==8){
+                    stop();
+                    console.log(formatTime(x.time()));
+                    document.getElementsByClassName('totalSeconds')[0].innerHTML = formatTime(x.time());
+                    document.getElementsByClassName('container')[1].className = "container hide";
+                    document.getElementsByClassName('container')[0].className = "container youwon";
+                    
+                }
+            }, 500);//this timeout just to wait until animation of match finish and then show the finish div
+        }else{
+            // doesnt match
+            console.log('doesnt match');
+            cardsList[i].className += " no-match";
+            cardsList[firstIndexSelected].className += " no-match";
+            setTimeout(function () {
+                cardsList[i].className = "card";
+                cardsList[firstIndexSelected].className = "card";
+                isIgnore = false;
+            }, 500);//this timeout just to wait until animation of no-match finish and then reverse card class to be clicked again
+        }
+    }else{
+        isIgnore = false;
     }
-  }
 }
 
 //  Timer methods 
@@ -202,41 +203,41 @@ return s.substr(s.length - size);
 }
 
 function formatTime(time) {
-var h = m = s = ms = 0;
-var newTime = '';
+    var h = m = s = ms = 0;
+    var newTime = '';
 
-h = Math.floor( time / (60 * 60 * 1000) );
-time = time % (60 * 60 * 1000);
-m = Math.floor( time / (60 * 1000) );
-time = time % (60 * 1000);
-s = Math.floor( time / 1000 );
-ms = time % 1000;
+    h = Math.floor( time / (60 * 60 * 1000) );
+    time = time % (60 * 60 * 1000);
+    m = Math.floor( time / (60 * 1000) );
+    time = time % (60 * 1000);
+    s = Math.floor( time / 1000 );
+    ms = time % 1000;
 
-newTime = pad(h, 2) + ':' + pad(m, 2) + ':' + pad(s, 2);
-return newTime;
+    newTime = pad(h, 2) + ':' + pad(m, 2) + ':' + pad(s, 2);
+    return newTime;
 }
 
 function show() {
-time = document.getElementById('time');
-update();
+    time = document.getElementById('time');
+    update();
 }
 
 function update() {
-time.innerHTML = formatTime(x.time());
+    time.innerHTML = formatTime(x.time());
 }
 
 function start() {
-clocktimer = setInterval("update()", 1);
-x.start();
+    clocktimer = setInterval("update()", 1);
+    x.start();
 }
 
 function stop() {
-x.stop();
-clearInterval(clocktimer);
+    x.stop();
+    clearInterval(clocktimer);
 }
 
 function reset() {
-stop();
-x.reset();
-update();
+    stop();
+    x.reset();
+    update();
 }

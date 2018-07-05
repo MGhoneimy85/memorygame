@@ -45,9 +45,8 @@ body {
 
 .youwon{
     height: 100%;
-    background: #fff;
+    padding:20px;
 }
-
 .youwon p{
     font-size: 2em;
     font-weight: bold;
@@ -55,7 +54,7 @@ body {
 
 .youwon .fa.fa-check-circle-o{
     font-size: 80px;
-    color: green;
+    color: #02ccba;
 }
 
 .youwon .btn{
@@ -225,3 +224,104 @@ h1 {
     75% { transform:  rotate(-25deg); }
     100% { transform:  rotate(0deg); }
 }
+
+
+/*Congratulations styles */
+
+.balloon { 
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 30px;
+    position: relative;
+}
+.balloon > div {
+    width:104px;
+    height:140px; 
+    background:#02ccba;
+    border-radius:0;
+    border-radius:80% 80% 80% 80%;
+    margin: 0 auto;
+    position: absolute;
+    padding:10px;
+    box-shadow:inset 17px 7px 10px #02ccba; 
+    -webkit-transform-origin: bottom center; 
+}
+.balloon > div:before {
+    color:#02ccba;
+    position:absolute;
+    bottom:-11px;
+    left: 52px;  
+    content:"▲";
+    font-size:1em;
+}
+
+.balloon > div:nth-child(1){
+    left: 20px;
+    top:0;
+    box-shadow:inset 10px 10px 10px darken(#02ccba, 10%);
+    -webkit-animation:balloon1 6s ease-in-out infinite;
+    -moz-animation:balloon1 6s ease-in-out infinite;
+    -o-animation:balloon1 6s ease-in-out infinite;
+    animation:balloon1 6s ease-in-out infinite;
+}
+
+.balloon > div:nth-child(2){    
+    right: 20px;
+    top:0;
+    box-shadow:inset 10px 10px 10px darken(#02ccba, 10%);
+    -webkit-animation:balloon2 6s ease-in-out infinite;
+    -moz-animation:balloon2 6s ease-in-out infinite;
+    -o-animation:balloon2 6s ease-in-out infinite;
+    animation:balloon2 6s ease-in-out infinite;
+}
+
+.balloon span {
+    font-size: 6.8em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    position: relative;
+    top: -10px;
+    left: 50%;
+    margin-left: -56px;
+} 
+
+/*BALLOON 1 */
+@-webkit-keyframes balloon1 {
+    0%,100%{ -webkit-transform:translateY(0) rotate(-6deg);}
+    50%{ -webkit-transform:translateY(-20px) rotate(8deg); }
+}
+@-moz-keyframes balloon1 {
+    0%,100%{ -moz-transform:translateY(0) rotate(-6deg);}
+    50%{ -moz-transform:translateY(-20px) rotate(8deg); }
+}
+@-o-keyframes balloon1 {
+    0%,100%{ -o-transform:translateY(0) rotate(-6deg);}
+    50%{ -o-transform:translateY(-20px) rotate(8deg); }
+}
+@keyframes balloon1 {
+    0%,100%{ transform:translateY(0) rotate(-6deg);}
+    50%{ transform:translateY(-20px) rotate(8deg); }
+}
+
+/* BAllOON 2 */
+@-webkit-keyframes balloon2 {
+    0%,100%{ -webkit-transform:translateY(0) rotate(6eg);}
+    50%{ -webkit-transform:translateY(-30px) rotate(-8deg); }
+}
+@-moz-keyframes balloon2 {
+    0%,100%{ -moz-transform:translateY(0) rotate(6deg);}
+    50%{ -moz-transform:translateY(-30px) rotate(-8deg); }
+}
+@-o-keyframes balloon2 {
+    0%,100%{ -o-transform:translateY(0) rotate(6deg);}
+    50%{ -o-transform:translateY(-30px) rotate(-8deg); }
+}
+@keyframes balloon2 {
+    0%,100%{ transform:translateY(0) rotate(6deg);}
+    50%{ transform:translateY(-30px) rotate(-8deg); }
+}
+  
+  
+  
+  
+  
