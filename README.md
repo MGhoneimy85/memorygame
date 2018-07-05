@@ -21,12 +21,16 @@ https://fonts.googleapis.com/css?family=Coda
 ## Functions
 
 Intialtize Function  init()
+    take cards html from deck2 and shuffle them and append to deck and add event listener to every card
 
 Shuffle Function shuffle()
+    shuffle cards (was included in the )
 
 Reset Function reset()
+    reload page to start the game from the begining 
 
 onClick Function cardClicked()
+    handle when any card clicked if this card is not opened or this card not match
 
 Stopwatch for Timer clsStopwatch()
         show()
@@ -34,7 +38,7 @@ Stopwatch for Timer clsStopwatch()
         start()
         stop()
         reset()
-
+    for the timer to start the timer once you start the game when you clicked any card timer start 
 
 ## References
 
