@@ -99,7 +99,16 @@ function cardClicked(i) {
     Moves++;
     document.getElementsByClassName('moves')[0].textContent =  Moves;
     document.getElementsByClassName('totalmoves')[0].textContent =  Moves;
-
+    
+    //star rating 
+    if(Moves == 2){
+        document.getElementsByClassName('stars')[0].children[2].children[0].className="fa fa-star-o";
+        document.getElementsByClassName('totalstars')[0].textContent =  2;
+    }
+    else if( Moves == 8){
+        document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star-o";
+        document.getElementsByClassName('totalstars')[0].textContent =  1;
+    }
     if(cardsList[firstIndexSelected].children[0].classList[1] == cardsList[i].children[0].classList[1]){
         // match
         console.log('match');
@@ -107,18 +116,7 @@ function cardClicked(i) {
         cardsList[firstIndexSelected].className = "opencard match";
         TotalMatches++;
         isIgnore = false;
-        if(Moves <= 10 && TotalMatches == 4){
-            document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star";
-            document.getElementsByClassName('totalstars')[0].textContent =  2;
-        }
-        else if( Moves <=20 && TotalMatches == 8){
-            document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star";
-            document.getElementsByClassName('stars')[0].children[2].children[0].className="fa fa-star";
-            document.getElementsByClassName('totalstars')[0].textContent =  3;
-        }
-        else{
-            document.getElementsByClassName('totalstars')[0].textContent =  1;
-        }
+        
         setTimeout(function () {
             if(TotalMatches==8){
                 stop();
@@ -143,7 +141,7 @@ function cardClicked(i) {
   }
 }
 
-
+//  Timer methods 
 //	Simple example of using private variables
 //
 //	To start the stopwatch:
@@ -167,31 +165,31 @@ var	clsStopwatch = function() {
     var	lapTime	= 0;	// Time on the clock when last stopped in milliseconds
 
     var	now	= function() {
-            return (new Date()).getTime(); 
-        }; 
+        return (new Date()).getTime(); 
+    }; 
 
     // Public methods
     // Start or resume
     this.start = function() {
-            startAt	= startAt ? startAt : now();
-        };
+        startAt	= startAt ? startAt : now();
+    };
 
     // Stop or pause
     this.stop = function() {
-            // If running, update elapsed time otherwise keep it
-            lapTime	= startAt ? lapTime + now() - startAt : lapTime;
-            startAt	= 0; // Paused
-        };
+        // If running, update elapsed time otherwise keep it
+        lapTime	= startAt ? lapTime + now() - startAt : lapTime;
+        startAt	= 0; // Paused
+    };
 
     // Reset
     this.reset = function() {
-            lapTime = startAt = 0;
-        };
+        lapTime = startAt = 0;
+    };
 
     // Duration
     this.time = function() {
-            return lapTime + (startAt ? now() - startAt : 0); 
-        };
+        return lapTime + (startAt ? now() - startAt : 0); 
+    };
 };
 
 var x = new clsStopwatch();
