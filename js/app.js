@@ -98,16 +98,7 @@ function cardClicked(i) {
         Moves++;
         document.getElementsByClassName('moves')[0].textContent =  Moves;
         document.getElementsByClassName('totalmoves')[0].textContent =  Moves;
-        
-        //star rating 
-        if(Moves == 8 && TotalMatches < 4 ){
-            document.getElementsByClassName('stars')[0].children[2].children[0].className="fa fa-star-o";
-            document.getElementsByClassName('totalstars')[0].textContent =  2;
-        }
-        else if( Moves == 20 && TotalMatches <= 7){
-            document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star-o";
-            document.getElementsByClassName('totalstars')[0].textContent =  1;
-        }
+            
         if(cardsList[firstIndexSelected].children[0].classList[1] == cardsList[i].children[0].classList[1]){
             // match
             console.log('match');
@@ -136,6 +127,15 @@ function cardClicked(i) {
                 cardsList[firstIndexSelected].className = "card";
                 isIgnore = false;
             }, 500);//this timeout just to wait until animation of no-match finish and then reverse card class to be clicked again
+        }
+        //star rating 
+        if(Moves == 8 && TotalMatches < 4 ){
+            document.getElementsByClassName('stars')[0].children[2].children[0].className="fa fa-star-o";
+            document.getElementsByClassName('totalstars')[0].textContent =  2;
+        }
+        else if( Moves == 20 && TotalMatches <= 7){
+            document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star-o";
+            document.getElementsByClassName('totalstars')[0].textContent =  1;
         }
     }else{
         isIgnore = false;
