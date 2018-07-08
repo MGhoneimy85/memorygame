@@ -100,11 +100,11 @@ function cardClicked(i) {
         document.getElementsByClassName('totalmoves')[0].textContent =  Moves;
         
         //star rating 
-        if(Moves == 2){
+        if(Moves == 8 && TotalMatches < 4 ){
             document.getElementsByClassName('stars')[0].children[2].children[0].className="fa fa-star-o";
             document.getElementsByClassName('totalstars')[0].textContent =  2;
         }
-        else if( Moves == 8){
+        else if( Moves == 20 && TotalMatches <= 7){
             document.getElementsByClassName('stars')[0].children[1].children[0].className="fa fa-star-o";
             document.getElementsByClassName('totalstars')[0].textContent =  1;
         }
